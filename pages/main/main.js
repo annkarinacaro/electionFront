@@ -15,17 +15,16 @@ function getAllCandidates() {
         .then((response) => response.json())
         .then((candidates) => {
             candidates.forEach((element) => console.log(element));
-            /*console.log(candidates[0].id);
-    console.log(candidates[0].name);
-    console.log(candidates[0].partyId.partyId);*/
 
             const tableElement = document.querySelector(
                 "table.candidate-table"
             );
             tableElement.innerHTML = `
     <tr>
+    
     <th>Name</th>
     <th>Party id</th>
+    <th>Party Name</th>
     <th>Delete</th>
     </tr>
     `;
@@ -42,6 +41,10 @@ function getAllCandidates() {
                 const partyIdTdElement = document.createElement("td");
                 partyIdTdElement.innerHTML = element.partyId.partyId;
                 trElement.appendChild(partyIdTdElement);
+
+                const partyNameTdElement = document.createElement("td");
+                partyNameTdElement.innerHTML = element.partyId.partyName;
+                trElement.appendChild(partyNameTdElement);
 
                 const deleteTdElement = document.createElement("td");
                 trElement.appendChild(deleteTdElement);
